@@ -342,14 +342,19 @@ class Skpp extends BaseController
 
     function sendVerification($skppId){
         $skppInfo = $this->Mskpp->getInfoSkpp($skppId);
+        $noper = "";
 
         if(!empty($skppInfo)){
+            if($skppInfo->skpp_no_pengantar != NULL || !empty($skppInfo->skpp_no_pengantar)) {
+                $noper = " dengan No. Surat Pengantar ".$skppInfo->skpp_no_pengantar;
+            }
+
             $data1["satker"] = $skppInfo->satker_nama;
             $data1["surat"] = $skppInfo->skpp_no_surat;
             $data1["email"] = $skppInfo->satker_email;
             $data1["subject"] = "SKPP ".$skppInfo->skpp_status;
             $data1["open_message"] = " SKPP dengan No. Surat ";
-            $data1["message"] = " telah ".$skppInfo->skpp_status;
+            $data1["message"] = " telah ".$skppInfo->skpp_status . $noper;
 
             $sendStatus = verificationMail($data1);
 

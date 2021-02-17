@@ -213,6 +213,20 @@ $route['statusSpmk'] = 'Spmk/statusSpmk';
 
 
 
+/***************** KONFIRMASI PENERIMAAN DEFINED ROUTES *******************/
+
+$route['Konfirmasi'] = 'Konfirmasi';
+$route['konfirmasiListing'] = 'Konfirmasi/konfirmasiListing';
+$route['deleteKonfirmasi'] = 'Konfirmasi/deleteKonfirmasi';
+$route['addKonfirmasi'] = 'Konfirmasi/addKonfirmasi';
+$route['getInfoKonfirmasi'] = 'Konfirmasi/getInfoKonfirmasi';
+$route['updateKonfirmasi'] = 'Konfirmasi/updateKonfirmasi';
+$route['statusKonfirmasi'] = 'Konfirmasi/statusKonfirmasi';
+
+/************* END KONFIRMASI PENERIMAAN DEFINED ROUTES *******************/
+
+
+
 /***************** PROFIL KPPN DEFINED ROUTES *******************/
 
 $route['Profil'] = 'Profil';

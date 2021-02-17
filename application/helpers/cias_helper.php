@@ -173,7 +173,7 @@ if(!function_exists('verificationMail'))
         // pre($detail);
         // die;
         
-        $CI = setWebProtocol();        
+        $CI = setProtocol();        
         
         $CI->email->from(EMAIL_FROM, FROM_NAME);
         $CI->email->subject($detail["subject"]);
