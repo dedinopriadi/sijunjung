@@ -82,6 +82,32 @@ class Profil extends BaseController
     }
 
 
+    public function getInfoKontak()
+    {
+        $postdata = json_decode(file_get_contents('php://input'), TRUE);
+
+        $email   = $this->Mprofil->getInfoKontak("6");
+        $telp    = $this->Mprofil->getInfoKontak("7");
+        $website = $this->Mprofil->getInfoKontak("8");
+
+        $data  = ['email' => $email->profil_isi, 'telp' => $telp->profil_isi, 'website' => $website->profil_isi];
+        
+
+        $response = [];
+            if (!empty($data)) {    
+                $response['info'] = $data;   
+                $response['success'] = "Kontak KPPN Sijunjung";  
+                $this->output->set_content_type('application/json')->set_output(json_encode($response)); 
+            }
+            else {
+                
+                http_response_code(400);
+                $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Tidak Dapat Mengambil Kontak"]]));
+
+            }
+    }
+
+
 
     public function updateProfil()
     {
@@ -226,6 +252,37 @@ class Profil extends BaseController
                     http_response_code(400);
                     $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Gagal Mengubah Informasi Zona Integritas"]]));
                 }
+            }
+
+        }
+    }
+
+
+    public function updateKontak()
+    {
+        $postdata = json_decode(file_get_contents('php://input'), TRUE);
+        $email    = (isset($postdata['datax']['email']) ? $postdata['datax']['email'] : NULL);
+        $telp     = (isset($postdata['datax']['telp']) ? $postdata['datax']['telp'] : NULL);
+        $website  = (isset($postdata['datax']['website']) ? $postdata['datax']['website'] : NULL);
+
+        if(empty($email) || empty($telp) || empty($website)){
+            http_response_code(400);
+            $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Data Isian Kontak Kosong"]]));
+        }else{
+
+            $emailx   = array('profil_isi' => $email);
+            $telpx    = array('profil_isi' => $telp);
+            $websitex = array('profil_isi' => $website);
+
+            $this->Mprofil->updateProfil($emailx, '6');
+            $this->Mprofil->updateProfil($telpx, '7');
+            $update = $this->Mprofil->updateProfil($websitex, '8');
+
+            if($update == TRUE){
+                $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["Data Hubungi Kami Berhasil Diubah"]]));
+            }else{
+                http_response_code(400);
+                $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Gagal Mengubah Data Hubungi Kami"]]));
             }
 
         }

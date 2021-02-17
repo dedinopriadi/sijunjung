@@ -38,6 +38,7 @@
                                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalProsesSkpp" ng-show="btnProses"><i class="fa fa-history" aria-hidden="true"></i> Proses</button>
                                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSelesaiSkpp" ng-show="btnSelesai"><i class="fa fa-check-square-o" aria-hidden="true"></i> Selesai</button>
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTolakSkpp" ng-show="btnSelesai"><i class="fa fa-close" aria-hidden="true"></i> Tolak</button>
+                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalEditSupplier" ng-show="btnShow"><i class="fa fa-bullseye" aria-hidden="true"></i> Supplier</button>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditSkpp" ng-show="btnShow" ng-click="getInfoSkpp(noid)"><i class="fa fa-lock" aria-hidden="true"></i> Edit</button>
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteSkpp" ng-show="btnShow"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
                                                 <button type="button" class="btn btn-secondary" ng-click="getSkpp(newPageNumber)"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
@@ -103,7 +104,9 @@
                                             <th data-field="nik">Satuan Kerja</th>
                                             <th data-field="nama">Tanggal Terima</th>
                                             <th data-field="nama">Perihal</th>
+                                            <th data-field="nama">No. Surat Pengantar</th>
                                             <th data-field="nama">Status</th>
+                                            <th data-field="nama">Supplier</th>
                                         </tr>
                                     </thead>
                                     <tbody ng-if="skpp.length > 0">
@@ -113,10 +116,14 @@
                                             <td>{{ x.satker }}</td>
                                             <td>{{ x.tgl }}</td>
                                             <td>{{ x.perihal }}</td>
+                                            <td>{{ x.no_pengantar }}</td>
                                                 <td ng-if="x.status == 'Diterima'" style="color: #4d0478;"><b>{{ x.status }}</b></td>
                                                 <td ng-if="x.status == 'Diproses'" style="color: #043c78;"><b>{{ x.status }}</b></td>
                                                 <td ng-if="x.status == 'Selesai'" style="color: #014a0a;"><b>{{ x.status }}</b></td>
                                                 <td ng-if="x.status == 'Ditolak'" style="color: #80220a;"><b>{{ x.status }}</b></td>
+
+                                                <td ng-if="x.supplier == 'Aktif'" style="color: #014a0a;"><b>{{ x.supplier }}</b></td>
+                                                <td ng-if="x.supplier == 'Non Aktif'" style="color: #80220a;"><b>{{ x.supplier }}</b></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -160,6 +167,42 @@
                 </div>
                 <div class="modal-footer" style="margin-top: -50px;">
                     <a href="javascript:void(0)" ng-click="deleteSkpp()">Process</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ########################################## MODAL UPDATE SUPPLIER ################################################ -->
+
+
+    <div id="modalEditSupplier" class="modal modal-edu-general fullwidth-popup-InformationproModal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-close-area modal-close-df">
+                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Supplier</h5>
+                </div>
+                <div class="modal-body" style="margin-right: -50px; margin-left: -65px; margin-top: -25px;">
+                    <div ng-show="loadingModal">Loading... Please Wait...</div>
+                    <<div class="row" ng-show="!loadingModal" style="margin-bottom: 10px;">
+                        <div class="col-md-3" style="text-align: right;">
+                            <label for="status">Status Supplier</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select ng-model="supplier.status" class="form-control">
+                                <option value="Aktif">Aktif</option>
+                                <option value="Non Aktif">Non Aktif</option>
+                            </select>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top: -50px;">
+                    <a href="javascript:void(0)" ng-click="updateSupplier()">Process</a>
                 </div>
             </div>
         </div>
@@ -229,16 +272,16 @@
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div>
                 <div class="modal-header">
-                    <h5 class="modal-title">Keterangan</h5>
+                    <h5 class="modal-title">No. Surat Pengantar</h5>
                 </div>
                 <div class="modal-body" style="margin-right: -50px; margin-left: -65px; margin-top: -25px;">
                     <div ng-show="loadingModal">Loading... Please Wait...</div>
                     <div ng-show="!loadingModal" class="row" style="margin-bottom: 10px;">
                         <div class="col-md-3" style="text-align: right;">
-                            <label for="nik">Keterangan</label>
+                            <label for="nik">No. Surat Pengantar</label>
                         </div>
                         <div class="col-md-9">
-                            <input ng-model="selesai.keterangan" type="text" class="form-control" placeholder="Input Keterangan"/>
+                            <input ng-model="selesai.no_pengantar" type="text" class="form-control" placeholder="Input Keterangan"/>
                         </div>                        
                     </div>
                 </div>

@@ -193,6 +193,7 @@ $route['getInfoSkpp'] = 'Skpp/getInfoSkpp';
 $route['updateSkpp'] = 'Skpp/updateSkpp';
 $route['statusSkpp'] = 'Skpp/statusSkpp';
 $route['getSatker'] = 'Skpp/getSatker';
+$route['updateSupplier'] = 'Skpp/updateSupplier';
 
 /************* END SKPP DEFINED ROUTES *******************/
 
@@ -220,6 +221,8 @@ $route['updateProfil'] = 'Profil/updateProfil';
 $route['saveProfil'] = 'Profil/saveProfil';
 $route['getInfoIntegritas'] = 'Profil/getInfoIntegritas';
 $route['updateIntegritas'] = 'Profil/updateIntegritas';
+$route['getInfoKontak'] = 'Profil/getInfoKontak';
+$route['updateKontak'] = 'Profil/updateKontak';
 
 /************* END PROFIL KPPN DEFINED ROUTES *******************/
 

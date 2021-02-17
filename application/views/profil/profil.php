@@ -71,6 +71,7 @@
                                                     <ul id="myTabedu1" class="tab-review-design">
                                                         <li class="active"><a href="#description">Tentang Kami</a></li>
                                                         <li><a href="#INFORMATION" ng-click="getInfoIntegritas()">Informasi Zona Integritas</a></li>
+                                                        <li><a href="#KONTAK" ng-click="getInfoKontak()">Hubungi Kami</a></li>
                                                     </ul>
                                                     <div id="myTabContent" class="tab-content custom-product-edit">
                                                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -146,6 +147,34 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-12" align="right">
                                                                                 <button type="button" class="btn btn-primary waves-effect waves-light" ng-click="updateIntegritas()">Simpan</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-tab-list tab-pane fade" id="KONTAK">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                    <div class="review-content-section">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                <div class="form-group">
+                                                                                    <input ng-model="kontak.email" type="text" class="form-control" placeholder="Input Email KPPN Sijunjung">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <input ng-model="kontak.telp" type="text" class="form-control" placeholder="Input No. Telepon KPPN Sijunjung">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                <div class="form-group">
+                                                                                    <input ng-model="kontak.website" type="text" class="form-control" placeholder="Input Alamat Website KPPN Sijunjung">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12" align="left">
+                                                                                <button type="button" class="btn btn-primary waves-effect waves-light" ng-click="updateKontak()">Simpan</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>

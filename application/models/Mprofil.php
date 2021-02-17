@@ -53,6 +53,17 @@ class Mprofil extends CI_Model
     }
 
 
+    function getInfoKontak($id)
+    {
+        $this->db->select('*');
+        $this->db->from('profil');
+        $this->db->where('profil_id', $id);
+        $result = $this->db->get();
+
+        return $result->row();
+    }
+
+
     function updateProfil($profilInfo, $profilId)
     {
         $this->db->where('profil_id', $profilId);

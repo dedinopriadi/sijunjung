@@ -112,7 +112,7 @@
                                             <td>{{ x.tanggal }}</td>
                                             <td>
                                                 <a ng-if="x.extension == 'pdf'" target="_blank" href="https://docs.google.com/viewer?url=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}&embedded=true"><i ng-if="x.file != ''" class="fa fa-paperclip"></i></a>
-                                                <a ng-if="x.extension == 'doc' || x.extension == 'docx'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}' width='1366px' height='623px' frameborder='0'"><i ng-if="x.file != ''" class="fa fa-paperclip"></i></a>
+                                                <a ng-if="x.extension == 'doc' || x.extension == 'docx'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}"><i ng-if="x.file != ''" class="fa fa-paperclip"></i></a>
                                                 <a ng-if="x.extension == ''">No File</a>
                                             </td>
                                         </tr>

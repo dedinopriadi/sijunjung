@@ -52,7 +52,7 @@ class Skpp extends BaseController
         $skpps = $this->Mskpp->getDataSkpp($start, $num, strtoupper($search));
 
         foreach($skpps->result_array() as $row){
-            $skpp[] = ['id' => $row['skpp_id'], 'kode' => $row['satker_kd'], 'no_surat' => $row['skpp_no_surat'], 'perihal' => $row['skpp_perihal'], 'tgl' => $row['skpp_tgl_terima'], 'status' => $row['skpp_status'], 'ket' => $row['skpp_keterangan'], 'alasan' => $row['skpp_alasan'], 'satker' => $row['satker_nama'], 'email' => $row['satker_email']];
+            $skpp[] = ['id' => $row['skpp_id'], 'kode' => $row['satker_kd'], 'no_surat' => $row['skpp_no_surat'], 'perihal' => $row['skpp_perihal'], 'tgl' => $row['skpp_tgl_terima'], 'status' => $row['skpp_status'], 'ket' => $row['skpp_keterangan'], 'alasan' => $row['skpp_alasan'], 'satker' => $row['satker_nama'], 'email' => $row['satker_email'], 'no_pengantar' => $row['skpp_no_pengantar'], 'supplier' => $row['skpp_supplier']];
         }
 
         $response = [];
@@ -135,10 +135,10 @@ class Skpp extends BaseController
                     $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Status SKPP Gagal diproses"]]));
                 }
             } else if($status == 3) {
-                $keterangan = (isset($postdata['datax']['keterangan']) ? $postdata['datax']['keterangan'] : NULL);
+                $keterangan = (isset($postdata['datax']['no_pengantar']) ? $postdata['datax']['no_pengantar'] : NULL);
 
                 $historySkpp = array('skpp_id'=>$id, 'history_status'=>'Selesai', 'history_time'=>$waktu);
-                $skppInfo = array('skpp_status'=>'Selesai', 'skpp_keterangan'=>$keterangan);
+                $skppInfo = array('skpp_status'=>'Selesai', 'skpp_no_pengantar'=>$keterangan);
 
                 $result = $this->Mskpp->updateStatus($skppInfo, $id);
                     
@@ -296,6 +296,38 @@ class Skpp extends BaseController
                 $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Gagal Menghapus Data SKPP"]]));
             }
 
+        }
+    }
+
+
+    public function updateSupplier()
+    {
+
+        $postdata = json_decode(file_get_contents('php://input'), TRUE);
+        $id       = (isset($postdata['id']) ? $postdata['id'] : NULL);
+        $status   = (isset($postdata['datax']['status']) ? $postdata['datax']['status'] : NULL);
+
+        if(empty($id)){
+            http_response_code(400);
+            $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Referensi ID Kosong"]]));
+        }else{
+
+            $skppInfo = array('skpp_supplier'=>$status);
+            
+            $result = $this->Mskpp->saveSkpp($skppInfo, $id);
+
+            if($result == true)
+            {
+                
+                $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["Status Supplier ".$status]]));
+                
+            }
+            else
+            {
+                http_response_code(400);
+                $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Gagal mengubah data"]]));
+            }
+   
         }
     }
 

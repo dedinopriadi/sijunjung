@@ -81,7 +81,7 @@
                             <ul ng-if="format.length > 0" class="basic-list" style="margin-top: 20px;">
                                 <li dir-paginate="x in format  | orderBy:sortField:reverse | itemsPerPage:itemsPerPage" total-items="total_count" ng-click="enableButton(x.id, $index)">{{ x.judul }}  
                                     <a ng-if="x.extension == 'pdf'" target="_blank" href="https://docs.google.com/viewer?url=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}&embedded=true"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
-                                    <a ng-if="x.extension == 'doc' || x.extension == 'docx'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}' width='1366px' height='623px' frameborder='0'"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
+                                    <a ng-if="x.extension == 'doc' || x.extension == 'docx'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/surat/{{ x.file }}"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
                                 </li>
                             </ul>
                             <div align="right">

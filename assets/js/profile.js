@@ -9,6 +9,7 @@ app.controller('profilCtrl',function($scope, $rootScope, $http){
   $scope.errors = [];
   $scope.profil = {};
   $scope.integritas = {};
+  $scope.kontak = {};
   $scope.detail = {};
   $scope.edit = {};
   $scope.noid;
@@ -63,6 +64,27 @@ app.controller('profilCtrl',function($scope, $rootScope, $http){
           $scope.integritas = e.data.info;
           $scope.konten2 = $scope.integritas.isi;
           $('#txtIntegritas').summernote('code', $scope.konten2);
+          $scope.dataLoadedSuccessfully = true;
+          $scope.loaded = true;
+          toastr.success(e.data.success);
+        }, function error(e) {
+          console.log(e.data.errors);
+          $scope.dataLoadedSuccessfully = true;
+          $scope.loaded = true;
+          toastr.error(e.data.errors);
+        });
+  };
+
+
+  $scope.getInfoKontak = function() {
+    $scope.dataLoadedSuccessfully = false;
+      $scope.loaded = false;
+      $http({
+          method: 'POST',
+          url: baseURL + "getInfoKontak",
+          data :{}
+        }).then(function success(e) {
+          $scope.kontak = e.data.info;
           $scope.dataLoadedSuccessfully = true;
           $scope.loaded = true;
           toastr.success(e.data.success);
@@ -131,6 +153,26 @@ app.controller('profilCtrl',function($scope, $rootScope, $http){
           $scope.dataLoadedSuccessfully = true;
           $scope.loaded = true;
           console.log(e.data.errors);
+          toastr.error(e.data.errors);
+        });
+    };
+
+
+    $scope.updateKontak = function() {
+      $scope.dataLoadedSuccessfully = false;
+      $scope.loaded = false;
+      $http({
+          method: 'POST',
+          url: baseURL + "updateKontak",
+          data :{datax: $scope.kontak}
+        }).then(function success(e) {
+          $scope.dataLoadedSuccessfully = true;
+          $scope.loaded = true;
+          toastr.success(e.data.success);
+        }, function error(e) {
+          console.log(e.data.error);
+          $scope.dataLoadedSuccessfully = true;
+          $scope.loaded = true;
           toastr.error(e.data.errors);
         });
     };

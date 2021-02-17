@@ -18,6 +18,7 @@ app.controller('skppCtrl',function($scope, $rootScope, $http){
   $scope.detail = {};
   $scope.edit = {};
   $scope.selesai = {};
+  $scope.supplier = {};
   $scope.filter = {};
   $scope.ls_satker = [];
   $scope.noid;
@@ -61,6 +62,7 @@ app.controller('skppCtrl',function($scope, $rootScope, $http){
       $scope.skpp_satker = $scope.skpp[indexs].satker;
       $scope.skpp_status = $scope.skpp[indexs].status;
       $scope.skpp_no_surat = $scope.skpp[indexs].no_surat;
+      $scope.supplier.status = $scope.skpp[indexs].supplier;
 
       switch ($scope.btnShow) {
       case true:
@@ -193,6 +195,32 @@ app.controller('skppCtrl',function($scope, $rootScope, $http){
         }).then(function success(e) {
           $scope.loadingModal = false;
           $('#modalEditSkpp').modal('hide');
+          $scope.btnShow = false;
+          $scope.btnProses = false;
+          $scope.btnSelesai = false;
+          toastr.success(e.data.success);
+          $scope.getSkpp();
+        }, function error(e) {
+          console.log(e.data.error);
+          $scope.loadingModal = false;
+          //$('#modalEditDonatur').modal('hide');
+          $scope.btnShow = false;
+          $scope.btnProses = false;
+          $scope.btnSelesai = false;
+          toastr.error(e.data.errors);
+        });
+    };
+
+    $scope.updateSupplier = function() {
+      $scope.loadingModal = true;
+      $http({
+          method: 'POST',
+          url: baseURL + "updateSupplier",
+          data :{id: $scope.noid,
+                  datax: $scope.supplier}
+        }).then(function success(e) {
+          $scope.loadingModal = false;
+          $('#modalEditSupplier').modal('hide');
           $scope.btnShow = false;
           $scope.btnProses = false;
           $scope.btnSelesai = false;

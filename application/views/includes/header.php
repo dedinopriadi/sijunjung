@@ -122,6 +122,7 @@
                            <ul class="submenu-angle" aria-expanded="true">
                               <li><a title="SKPP" href="<?php echo base_url(); ?>Skpp"><span class="mini-sub-pro">SKPP</span></a></li>
                               <li><a title="SPM Koreksi" href="<?php echo base_url(); ?>Spmk"><span class="mini-sub-pro">SPM Koreksi</span></a></li>
+                              <li><a title="Konfirmasi Penerimaan" href="<?php echo base_url(); ?>Konfirmasi"><span class="mini-sub-pro">Konfirmasi Penerimaan</span></a></li>
                           </ul>
                       </li>
             <?php
@@ -140,7 +141,7 @@
                            <ul class="submenu-angle" aria-expanded="true">
                               <li><a title="Peraturan" href="<?php echo base_url(); ?>Peraturan"><span class="mini-sub-pro">Peraturan</span></a></li>
                               <li><a title="Format Surat" href="<?php echo base_url(); ?>Format"><span class="mini-sub-pro">Format Surat</span></a></li>
-                              <li><a title="Microlearning" href="<?php echo base_url(); ?>Jadwal"><span class="mini-sub-pro">Microlearning</span></a></li>
+                              <li><a title="Jadwal Pelatihan" href="<?php echo base_url(); ?>Jadwal"><span class="mini-sub-pro">Jadwal Pelatihan</span></a></li>
                               <li><a title="Berita dan Informasi" href="<?php echo base_url(); ?>Berita"><span class="mini-sub-pro">Berita dan Informasi</span></a></li>
 
                           </ul>
