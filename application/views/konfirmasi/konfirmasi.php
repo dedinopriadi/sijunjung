@@ -103,7 +103,6 @@
                                             <th data-field="nik">Satuan Kerja</th>
                                             <th data-field="nama">Tanggal Terima</th>
                                             <th data-field="nama">Perihal</th>
-                                            <th data-field="nama">No. Surat Persetujuan</th>
                                             <th data-field="nama">Status</th>
                                         </tr>
                                     </thead>
@@ -114,7 +113,6 @@
                                             <td>{{ x.satker }}</td>
                                             <td>{{ x.tgl }}</td>
                                             <td>{{ x.perihal }}</td>
-                                            <td>{{ x.no_persetujuan }}</td>
                                                 <td ng-if="x.status == 'Diterima'" style="color: #4d0478;"><b>{{ x.status }}</b></td>
                                                 <td ng-if="x.status == 'Diproses'" style="color: #043c78;"><b>{{ x.status }}</b></td>
                                                 <td ng-if="x.status == 'Selesai'" style="color: #014a0a;"><b>{{ x.status }}</b></td>
@@ -231,13 +229,13 @@
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div>
                 <div class="modal-header">
-                    <h5 class="modal-title">Surat Persetujuan</h5>
+                    <h5 class="modal-title">Keterangan</h5>
                 </div>
                 <div class="modal-body" style="margin-right: -50px; margin-left: -65px; margin-top: -25px;">
                     <div ng-show="loadingModal">Loading... Please Wait...</div>
                     <div class="row" ng-show="!loadingModal" style="margin-bottom: 10px;">
                         <div class="col-md-3" style="text-align: right;">
-                            <label for="nik">No. Surat Persetujuan</label>
+                            <label for="nik">Keterangan</label>
                         </div>
                         <div class="col-md-9">
                             <input ng-model="selesai.no_persetujuan" type="text" class="form-control" placeholder="Input Nomor Surat Persetujuan"/>
@@ -425,14 +423,6 @@
                                 <option value="Selesai">Selesai</option>
                                 <option value="Ditolak">Ditolak</option>
                             </select>
-                        </div>                        
-                    </div>
-                    <div class="row" ng-show="!loadingModal" style="margin-bottom: 10px;">
-                        <div class="col-md-3" style="text-align: right;">
-                            <label for="persetujuan">No. Surat Persetujuan</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input ng-model="edit.konfir_no_persetujuan" type="text" class="form-control" placeholder="Input Nomor Surat Persetujuan"/>
                         </div>                        
                     </div>
                 </div>

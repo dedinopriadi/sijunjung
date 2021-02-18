@@ -52,7 +52,7 @@ class Konfirmasi extends BaseController
         $konfirmasis = $this->Mkonfirmasi->getDataKonfirmasi($start, $num, strtoupper($search));
 
         foreach($konfirmasis->result_array() as $row){
-            $konfirmasi[] = ['id' => $row['konfir_id'], 'kode' => $row['satker_kd'], 'no_surat' => $row['konfir_no_surat'], 'perihal' => $row['konfir_perihal'], 'tgl' => $row['konfir_tgl_terima'], 'status' => $row['konfir_status'], 'ket' => $row['konfir_keterangan'], 'alasan' => $row['konfir_alasan'], 'satker' => $row['satker_nama'], 'email' => $row['satker_email'], 'no_persetujuan' => $row['konfir_no_persetujuan']];
+            $konfirmasi[] = ['id' => $row['konfir_id'], 'kode' => $row['satker_kd'], 'no_surat' => $row['konfir_no_surat'], 'perihal' => $row['konfir_perihal'], 'tgl' => $row['konfir_tgl_terima'], 'status' => $row['konfir_status'], 'ket' => $row['konfir_keterangan'], 'alasan' => $row['konfir_alasan'], 'satker' => $row['satker_nama'], 'email' => $row['satker_email']];
         }
 
         $response = [];
@@ -138,7 +138,7 @@ class Konfirmasi extends BaseController
                 $persetujuan = (isset($postdata['datax']['no_persetujuan']) ? $postdata['datax']['no_persetujuan'] : NULL);
 
                 $historySpm = array('konfir_id'=>$id, 'history_status'=>'Selesai', 'history_time'=>$waktu);
-                $spmInfo = array('konfir_status'=>'Selesai', 'konfir_no_persetujuan'=>$persetujuan);
+                $spmInfo = array('konfir_status'=>'Selesai', 'konfir_keterangan'=>$persetujuan);
 
                 $result = $this->Mkonfirmasi->updateStatus($spmInfo, $id);
                     
@@ -241,14 +241,13 @@ class Konfirmasi extends BaseController
         $perihal  = (isset($postdata['datax']['konfir_perihal']) ? $postdata['datax']['konfir_perihal'] : NULL);
         $ket      = (isset($postdata['datax']['konfir_keterangan']) ? $postdata['datax']['konfir_keterangan'] : NULL);
         $status   = (isset($postdata['datax']['konfir_status']) ? $postdata['datax']['konfir_status'] : NULL);
-        $persetujuan = (isset($postdata['datax']['konfir_no_persetujuan']) ? $postdata['datax']['konfir_no_persetujuan'] : NULL);
 
         if(empty($id)){
             http_response_code(400);
             $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Referensi ID Kosong"]]));
         }else{
 
-            $spmInfo = array('konfir_no_surat'=>$no, 'konfir_perihal'=>$perihal, 'konfir_status'=>$status, 'konfir_keterangan'=>$ket, 'konfir_no_persetujuan'=>$persetujuan);
+            $spmInfo = array('konfir_no_surat'=>$no, 'konfir_perihal'=>$perihal, 'konfir_status'=>$status, 'konfir_keterangan'=>$ket);
             $historySpm = array('konfir_id'=>$id, 'history_status'=>$status, 'history_time'=>$waktu);
             
             $result = $this->Mkonfirmasi->saveKonfirmasi($spmInfo, $id);
