@@ -183,7 +183,7 @@
                         </div>
                         <div class="col-md-9">
                             <select ng-model="detail.satker" class="form-control">
-                                <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_id}}">{{opt.satker_nama}}</option>
+                                <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_kd}}">{{opt.satker_nama}}</option>
                             </select>
                         </div>                        
                     </div>
@@ -241,7 +241,7 @@
                         </div>
                         <div class="col-md-9">
                             <select ng-model="edit.satker_id" class="form-control">
-                                <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_id}}">{{opt.satker_nama}}</option>
+                                <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_kd}}">{{opt.satker_nama}}</option>
                             </select>
                         </div>                        
                     </div>
