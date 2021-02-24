@@ -305,6 +305,23 @@ class Spmk extends BaseController
                 $noper = " dengan No. Surat Persetujuan ".$spmkInfo->spm_no_persetujuan;
             }
 
+            $tok = $this->Mspmk->getToken($skppId);
+
+            foreach($tok->result_array() as $row){
+                $token[] = $row['syssatker_idfcm'];
+            }
+
+            if (!empty($token)) {  
+
+                $data["judul"] = "Hi " .$spmkInfo->satker_nama;
+                $data["pesan"] = "SPM Koreksi dengan No. Surat " .$spmkInfo->spm_no_surat. " telah ".$spmkInfo->spm_status . $noper;
+                $data["suara"] = "default";
+                $data["activity"] = ".SpmActivity";
+
+                $notif = sendNotif($token, $data);
+                  
+            }
+
             $data1["satker"] = $spmkInfo->satker_nama;
             $data1["surat"] = $spmkInfo->spm_no_surat;
             $data1["email"] = $spmkInfo->satker_email;

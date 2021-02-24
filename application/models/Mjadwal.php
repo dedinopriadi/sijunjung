@@ -38,7 +38,7 @@ class Mjadwal extends CI_Model
             $this->db->where($likeCriteria);
         }
         //$this->dbigt->where("(tipe = 'M1' OR tipe = 'M2' OR tipe = 'M3')");
-        $this->db->order_by('jadwal_id', 'DESC');
+        $this->db->order_by('jadwal_tgl', 'DESC');
         $this->db->limit($num, $start);
 
         $result = $this->db->get();
@@ -86,6 +86,15 @@ class Mjadwal extends CI_Model
         }else{
             return FALSE;
         }
+    }
+
+
+    function getPeserta($id)
+    {
+        $sql = "CALL getPeserta(".$id.")";
+
+        $result = $result = $this->db->query($sql);
+        return $result;
     }
 
 

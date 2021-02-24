@@ -304,12 +304,29 @@ class Konfirmasi extends BaseController
                 $noper = " dengan No. Surat Persetujuan ".$konfirInfo->konfir_no_persetujuan;
             }
 
+            $tok = $this->Mkonfirmasi->getToken($skppId);
+
+            foreach($tok->result_array() as $row){
+                $token[] = $row['syssatker_idfcm'];
+            }
+
+            if (!empty($token)) {  
+
+                $data["judul"] = "Hi " .$konfirInfo->satker_nama;
+                $data["pesan"] = "Konfirmasi Penerimaan dengan No. Surat " .$konfirInfo->konfir_no_surat. " telah ".$konfirInfo->konfir_status;
+                $data["suara"] = "default";
+                $data["activity"] = ".SpmActivity";
+
+                $notif = sendNotif($token, $data);
+                  
+            }
+
             $data1["satker"] = $konfirInfo->satker_nama;
             $data1["surat"] = $konfirInfo->konfir_no_surat;
             $data1["email"] = $konfirInfo->satker_email;
             $data1["subject"] = "Konfirmasi Penerimaan ".$konfirInfo->konfir_status;
             $data1["open_message"] = " Konfirmasi Penerimaan dengan No. Surat ";
-            $data1["message"] = " telah ".$konfirInfo->konfir_status . $noper;
+            $data1["message"] = " telah ".$konfirInfo->konfir_status;
 
             $sendStatus = verificationMail($data1);
 

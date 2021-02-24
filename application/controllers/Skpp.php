@@ -122,6 +122,7 @@ class Skpp extends BaseController
                 {
                     // $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Diproses"]]));
                     $this->Mskpp->addHistory($historySkpp);
+                    // $this->sendNotif($id);
                     $mail = $this->sendVerification($id);
                     if($mail = TRUE) {
                         $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Diproses. Email Notifikasi terkirim ke Satker"]]));
@@ -146,6 +147,7 @@ class Skpp extends BaseController
                 {
                     // $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Selesai"]]));
                     $this->Mskpp->addHistory($historySkpp);
+                    // $this->sendNotif($id);
                     $mail = $this->sendVerification($id);
                     if($mail = TRUE) {
                         $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Selesai. Email Notifikasi terkirim ke Satker"]]));
@@ -170,6 +172,7 @@ class Skpp extends BaseController
                 {
                     // $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Ditolak"]]));
                     $this->Mskpp->addHistory($historySkpp);
+                    // $this->sendNotif($id);
                     $mail = $this->sendVerification($id);
                     if($mail = TRUE) {
                         $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP Ditolak. Email Notifikasi terkirim ke Satker"]]));
@@ -255,6 +258,7 @@ class Skpp extends BaseController
             if($result == true)
             {
                 $this->Mskpp->addHistory($historySkpp);
+                // $this->sendNotif($id);
                 $mail = $this->sendVerification($id);
                 if($mail = TRUE) {
                     $this->output->set_content_type('application/json')->set_output(json_encode(['success' => ["SKPP berhasil diubah. Email Notifikasi terkirim ke Satker"]]));
@@ -349,6 +353,24 @@ class Skpp extends BaseController
                 $noper = " dengan No. Surat Pengantar ".$skppInfo->skpp_no_pengantar;
             }
 
+            $tok = $this->Mskpp->getToken($skppId);
+
+            foreach($tok->result_array() as $row){
+                $token[] = $row['syssatker_idfcm'];
+            }
+
+            if (!empty($token)) {  
+
+                $data["judul"] = "Hi " .$skppInfo->satker_nama;
+                $data["pesan"] = "SKPP dengan No. Surat " .$skppInfo->skpp_no_surat. " telah ".$skppInfo->skpp_status . $noper;
+                $data["suara"] = "default";
+                $data["activity"] = ".SkppActivity";
+
+                $notif = sendNotif($token, $data);
+                  
+            }
+
+
             $data1["satker"] = $skppInfo->satker_nama;
             $data1["surat"] = $skppInfo->skpp_no_surat;
             $data1["email"] = $skppInfo->satker_email;
@@ -363,6 +385,42 @@ class Skpp extends BaseController
             } else {
                 return FALSE;
             }
+        }
+    }
+
+
+    function sendNotif($skppId){
+        $skppInfo = $this->Mskpp->getInfoSkpp($skppId);
+        $noper = "";
+
+        if(!empty($skppInfo)){
+
+            $tok = $this->Mskpp->getToken($skppId);
+
+            foreach($tok->result_array() as $row){
+                $token[] = $row['syssatker_idfcm'];
+            }
+
+            if (!empty($token)) {  
+                if($skppInfo->skpp_no_pengantar != NULL || !empty($skppInfo->skpp_no_pengantar)) {
+                    $noper = " dengan No. Surat Pengantar ".$skppInfo->skpp_no_pengantar;
+                }
+
+                $data1["judul"] = "KPPN Sijunjung Mobile";
+                $data1["pesan"] = "SKPP dengan No. Surat " .$skppInfo->skpp_no_surat. " telah ".$skppInfo->skpp_status . $noper;
+                $data1["suara"] = "default";
+                $data1["activity"] = ".SkppActivity";
+
+                $notif = sendNotif($token, $data1);
+
+                // if($sendStatus){
+                //     return TRUE;
+                // } else {
+                //     return FALSE;
+                // }
+                  
+            }
+
         }
     }
 

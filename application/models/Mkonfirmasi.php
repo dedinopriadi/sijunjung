@@ -107,5 +107,13 @@ class Mkonfirmasi extends CI_Model
     }
 
 
+    function getToken($id)
+    {
+        $sql = "CALL getTokenKonfir(".$id.")";
+
+        $result = $result = $this->db->query($sql);
+        return $result;
+    }
+
 
 }

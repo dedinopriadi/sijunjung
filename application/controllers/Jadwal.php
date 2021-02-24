@@ -168,4 +168,38 @@ class Jadwal extends BaseController
         }
     }
 
+
+    public function getPeserta()
+    {
+
+        $postdata = json_decode(file_get_contents('php://input'), TRUE);
+        $id       = (isset($postdata['id']) ? $postdata['id'] : NULL);
+
+        if(empty($id)) {
+            http_response_code(400);
+            $this->output->set_content_type('application/json')->set_output(json_encode(['errors' => ["Referensi ID Kosong"]]));
+        } else {
+
+            $pesertas = $this->Mjadwal->getPeserta($id);
+
+            foreach($pesertas->result_array() as $row){
+                $peserta[] = ['satker' => $row['satker_nama'], 'jumlah' => $row['jpelatihan_jml_peserta'], 'ket' => $row['jpelatihan_ket']];
+            }
+
+            $response = [];
+                if (!empty($peserta)) {  
+                    $response['peser'] = $peserta;     
+                }
+                else {
+                    $response['status'] = 'empty';
+                    $response['error'] = $id; 
+                    $response['errors'] = "Data Pengaduan Kosong"; 
+                }
+            
+            $this->output->set_content_type('application/json')->set_output(json_encode($response));
+
+        }
+
+    }
+
 }

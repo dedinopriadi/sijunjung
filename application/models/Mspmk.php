@@ -107,5 +107,14 @@ class Mspmk extends CI_Model
     }
 
 
+    function getToken($id)
+    {
+        $sql = "CALL getTokenSpm(".$id.")";
+
+        $result = $result = $this->db->query($sql);
+        return $result;
+    }
+
+
 
 }

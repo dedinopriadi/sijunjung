@@ -8,6 +8,7 @@ app.controller('jadwalCtrl',function($scope, $rootScope, $http){
   $scope.loadingModal = false;
   $scope.errors = [];
   $scope.jadwal = [];
+  $scope.peserta = [];
   $scope.detail = {};
   $scope.edit = {};
   $scope.filter = {};
@@ -78,6 +79,25 @@ app.controller('jadwalCtrl',function($scope, $rootScope, $http){
           console.log(e.data.error);
           $scope.btnShow = false;
           toastr.error(e.data.errors);
+        });
+    };
+
+
+    $scope.getInfoPeserta = function(idx) {
+      $scope.loadingModal = true;
+      $http({
+          method: 'POST',
+          url: baseURL + "getPeserta",
+          data :{id: $scope.noid}
+        }).then(function success(e) {
+          $scope.peserta = e.data.peser;
+          $scope.loadingModal = false;
+          $scope.btnShow = false;
+        }, function error(e) {
+          console.log(e.data.error);
+          $scope.peserta = [];
+          $scope.btnShow = false;
+          toastr.warning("Tidak ada peserta");
         });
     };
 

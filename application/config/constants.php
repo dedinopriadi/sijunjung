@@ -106,3 +106,9 @@ define('SMTP_PORT',                             '465');					// your smtp port e.
 define('SMTP_USER',                             'info.kppnsijunjung@gmail.com');		// your smtp user
 define('SMTP_PASS',                             'kppn134679!@#');	// your smtp password
 define('MAIL_PATH',                             '/usr/sbin/sendmail');
+
+
+
+/************************** FIREBASE *****************************/
+
+define('API_ACCESS_KEY', 'AAAAi8R5_yo:APA91bFq-vOjaufgfGHuEnLDBv8n9N4vFC28Iw0Cyp6lAgQSHvUN9l0OVi7IGNLX_dwKaNP43H2mXUwIDUG0cKSuF7AKXGsRew3hPN57Yb0k9FYAJnfRDbcnUhb6bp2Sqt-i-mNuNXP0');

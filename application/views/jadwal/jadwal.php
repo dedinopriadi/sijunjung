@@ -35,6 +35,7 @@
                                     <div class="col-md-12" style=" text-align: right;">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPeserta" ng-show="btnShow" ng-click="getInfoPeserta(noid)"><i class="fa fa-users" aria-hidden="true"></i> Peserta</button>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditJadwal" ng-show="btnShow" ng-click="getInfoJadwal(noid)"><i class="fa fa-lock" aria-hidden="true"></i> Edit</button>
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteJadwal" ng-show="btnShow"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
                                                 <button type="button" class="btn btn-secondary" ng-click="getJadwal(newPageNumber)"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
@@ -157,6 +158,46 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- ########################################## MODAL PESERTA PELATIHAN ################################################ -->
+
+    <div id="modalPeserta" class="modal modal-edu-general fullwidth-popup-InformationproModal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-close-area modal-close-df">
+                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Data Peserta Pelatihan</h5>
+                </div>
+                <div class="modal-body" style="margin-right: -50px; margin-left: -65px; margin-top: -25px;">
+                    <div ng-show="loadingModal">Loading... Please Wait...</div>
+                    <table ng-show="!loadingModal" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Satker</th>
+                                <th style="text-align: center;">Peserta</th>
+                                <th style="text-align: right;">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-if="peserta.length > 0">
+                            <tr ng-repeat="x in peserta">
+                                <td style="text-align: left;">{{ x.satker }}</td>
+                                <td style="text-align: center;">{{ x.jumlah }} Orang</td>
+                                <td style="text-align: right;">{{ x.ket }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer" style="margin-top: -50px;">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

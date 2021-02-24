@@ -114,4 +114,13 @@ class Mskpp extends CI_Model
     }
 
 
+    function getToken($id)
+    {
+        $sql = "CALL getTokenSkpp(".$id.")";
+
+        $result = $result = $this->db->query($sql);
+        return $result;
+    }
+
+
 }

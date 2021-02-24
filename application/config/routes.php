@@ -250,6 +250,7 @@ $route['deleteJadwal'] = 'Jadwal/deleteJadwal';
 $route['addJadwal'] = 'Jadwal/addJadwal';
 $route['getInfoJadwal'] = 'Jadwal/getInfoJadwal';
 $route['updateJadwal'] = 'Jadwal/updateJadwal';
+$route['getPeserta'] = 'Jadwal/getPeserta';
 
 /*********** END JADWAL DEFINED ROUTES *******************/
 
