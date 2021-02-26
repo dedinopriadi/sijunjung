@@ -118,6 +118,20 @@ $route['updateSatker'] = 'Satker/updateSatker';
 
 
 
+/*********** KONSULTASI DEFINED ROUTES *******************/
+
+$route['Konsultasi'] = 'Konsultasi';
+$route['konsultasiListing'] = 'Konsultasi/konsultasiListing';
+$route['deleteKonsultasi'] = 'Konsultasi/deleteKonsultasi';
+$route['addKonsultasi'] = 'Konsultasi/addKonsultasi';
+$route['getInfoKonsultasi'] = 'Konsultasi/getInfoKonsultasi';
+$route['updateKonsultasi'] = 'Konsultasi/updateKonsultasi';
+
+/*********** END KONSULTASI DEFINED ROUTES *******************/
+
+
+
+
 /*********** STANDAR PELAYANAN DEFINED ROUTES *******************/
 
 $route['Standar'] = 'Standar';
