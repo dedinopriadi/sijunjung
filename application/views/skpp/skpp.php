@@ -429,6 +429,9 @@
                             <select ng-model="edit.satker_kd" class="form-control">
                                 <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_kd}}">{{opt.satker_nama}}</option>
                             </select>
+                            <!-- <select class="form-control" ng-model="edit.satker_kd" id="myselection">
+                                <option ng-if="ls_satker.length > 0" ng-repeat="opt in ls_satker" value="{{opt.satker_kd}}">{{opt.satker_nama}}</option>
+                            </select> -->
                         </div>                        
                     </div>
                     <div class="row" ng-show="!loadingModal" style="margin-bottom: 10px;">

@@ -135,7 +135,7 @@ class Format extends BaseController
         } else {
 
             $config['upload_path'] = './uploads/document/surat/'; 
-            $config['allowed_types'] = 'pdf|doc|docx'; 
+            $config['allowed_types'] = '*'; 
             $config['encrypt_name'] = TRUE; 
 
             $this->upload->initialize($config);
@@ -198,7 +198,7 @@ class Format extends BaseController
         } else {
 
             $config['upload_path'] = './uploads/document/surat/'; 
-            $config['allowed_types'] = 'pdf|doc|docx'; 
+            $config['allowed_types'] = '*'; 
             $config['encrypt_name'] = TRUE; 
 
             $this->upload->initialize($config);

@@ -74,15 +74,28 @@
     ============================================ -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/summernote/summernote.css">
 
-      <script src="<?php echo base_url(); ?>assets/admin/js/vendor/modernizr-2.8.3.min.js"></script>
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/select2/select2.min.css">
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/loading.css">
+    <script src="<?php echo base_url(); ?>assets/admin/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/loading.css">
 
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 
-      <script type="text/javascript">
-          var baseURL = "<?php echo base_url(); ?>";
-      </script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" /> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+
+    <script type="text/javascript">
+        var baseURL = "<?php echo base_url(); ?>";
+    </script>
+
+    <style type="text/css">
+      .select23 {
+        width: 100%;
+        padding: 16px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+      }
+    </style>
 
 
 </head>

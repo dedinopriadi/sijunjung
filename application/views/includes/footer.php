@@ -82,9 +82,6 @@
       ============================================ -->
       <script src="<?php echo base_url(); ?>assets/admin/js/main.js"></script>
 
-      <script src="<?php echo base_url(); ?>assets/admin/js/select2/select2.full.min.js"></script>
-      <script src="<?php echo base_url(); ?>assets/admin/js/select2/select2-active.js"></script>
-
     <!-- data table JS
         ============================================ -->
         <script src="<?php echo base_url(); ?>assets/admin/js/data-table/bootstrap-table.js"></script>
@@ -113,6 +110,12 @@
     ============================================ -->
     <script src="<?php echo base_url(); ?>assets/admin/js/summernote/summernote.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/admin/js/summernote/summernote-active.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" integrity="sha512-9p/L4acAjbjIaaGXmZf0Q2bV42HetlCLbv8EP0z3rLbQED2TAFUlDvAezy7kumYqg5T8jHtDdlm1fgIsr5QzKg==" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.full.min.js" integrity="sha512-rNNKEb5WQbxA4pLtGV9W746iT7tZlpjC6duViljPlPQhOOPz6Vu3nae8G9A36/W8WT+BWhso9vgETSfSP604vw==" crossorigin="anonymous"></script>
 
 
     <script>
@@ -170,6 +173,13 @@
                 height: '200'
             });
             
+        });
+    </script>
+
+
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            $('#myselection').select2();
         });
     </script>
 

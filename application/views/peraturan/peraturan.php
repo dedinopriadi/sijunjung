@@ -80,8 +80,8 @@
 
                             <ul ng-if="peraturan.length > 0" class="basic-list" style="margin-top: 20px;">
                                 <li dir-paginate="x in peraturan  | orderBy:sortField:reverse | itemsPerPage:itemsPerPage" total-items="total_count" ng-click="enableButton(x.id, $index)">{{ x.judul }}  
-                                    <a ng-if="x.extension == 'pdf'" target="_blank" href="https://docs.google.com/viewer?url=<?php echo base_url(); ?>uploads/document/{{ x.file }}&embedded=true"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
-                                    <a ng-if="x.extension == 'doc' || x.extension == 'docx'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/{{ x.file }}"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
+                                    <a ng-if="x.extension == 'pdf' || x.extension == 'zip' || x.extension == 'rar'" target="_blank" href="https://docs.google.com/viewer?url=<?php echo base_url(); ?>uploads/document/{{ x.file }}&embedded=true"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
+                                    <a ng-if="x.extension == 'doc' || x.extension == 'docx' || x.extension == 'xlxs' || x.extension == 'xls'" target="_blank" href="https://view.officeapps.live.com/op/embed.aspx?src=<?php echo base_url(); ?>uploads/document/{{ x.file }}"><i ng-if="x.file != ''" class="pull-right fa fa-paperclip"></i></a>
                                 </li>
                             </ul>
                             <div align="right">
